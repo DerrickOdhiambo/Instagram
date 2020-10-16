@@ -1,3 +1,14 @@
-h1 {
-  color: blue;
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+}
+.navbar-text {
+  font-family: sans-serif;
+  font-size: 25px;
+}
+.navbar-text h1 {
+  font-family: 'Cookie', cursive;
+  color: black;
 }
