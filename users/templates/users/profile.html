@@ -2,5 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>{{ user.username }}</h1>
-{% endblock %}
+<div class="container profile-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}" alt="profile picture">
+    <div class="user-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p>{{ user.profile.user_bio }}</p>
+    </div>
+  </div>
+  {% endblock %}
