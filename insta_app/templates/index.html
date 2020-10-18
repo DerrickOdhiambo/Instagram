@@ -7,14 +7,16 @@
       {% for image in images %}
       <div class="card">
         <div class="card-header">
-          <h5>{{image.username}}</h5>
+          <h5>{{image.post_creator}}</h5>
         </div>
         <div class="view overlay">
-          <img class="card-img-top img-fluid" src="{{ image.image_path.url }}" alt="">
+          <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}">
         </div>
         <div class="card-footer">
           <span>{{ image.likes }}</span>
-          <p>{{ image.insta_story }}</p>
+          <p>{{ image.image_caption }}</p>
+          <p>{{ image.comments }}</p>
+          <p class="text-muted">{{ image.date_posted }}</p>
         </div>
       </div>
       {% endfor %}
