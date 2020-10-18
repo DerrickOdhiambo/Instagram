@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container login-content">
+  <div class="row">
+    <div class="col-md-7">
+      <img src="{% static 'images/iglogin.jpg' %}" class="img-responsive" alt="">
+    </div>
+    <div class="col-md-5">
+      <div class="container login-content-section">
+        <h1 class="text-center">Instagram</h1>
+        <form method="post">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-info">Sign Up</button>
+          </div>
+        </form>
+        <div class="p-3">
+          <small class="text-muted">
+            Don't have an account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
