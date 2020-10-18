@@ -22,6 +22,7 @@
 </head>
 
 <body>
+  {% if user.is_authenticated %}
   <nav class="navbar sticky-top navbar-light white">
     <div class="navbar-text dark-text ml-5">
       <h1>Instagram</h1>
@@ -41,6 +42,8 @@
       <a href="" class="ml-3"><i class="far fa-user-circle"></i></a>
     </div>
   </nav>
+  {% else %}
+  {% endif %}
 </body>
 
 </html>
