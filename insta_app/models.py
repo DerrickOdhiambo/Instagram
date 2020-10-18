@@ -11,5 +11,3 @@ class User(models.Model):
         return self.username
 
 
-class Comment(models.Model):
-    user_comment = models.TextField()
