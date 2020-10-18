@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import User, Comment
+from .models import Image
 
 
 def index(request):
-    images = User.objects.all()
+    images = Image.objects.all()
     return render(request, 'index.html', {'images': images})
