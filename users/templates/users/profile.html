@@ -5,9 +5,14 @@
 <div class="container profile-section">
   <div class="media">
     <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}" alt="profile picture">
-    <div class="user-body">
-      <h2 class="account-heading">{{ user.username }}</h2>
-      <p>{{ user.profile.user_bio }}</p>
+    <div class="user-body d-flex">
+      <div>
+        <h2 class="account-heading">{{ user.username }}</h2>
+        <p>{{ user.profile.user_bio }}</p>
+      </div>
+      <div>
+        <a href="{% url 'update_profile' %}" class="btn btn-sm btn-otline ml-4">Edit Profile</a>
+      </div>
     </div>
   </div>
   {% endblock %}
