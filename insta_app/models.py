@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Image(models.Model):
@@ -7,7 +8,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length=30)
     image_caption = models.TextField()
     post_creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    likes = models.IntegerField()
+    likes = models.ManyToManyField(User, related_name='image_posts')
     comments = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 
@@ -22,3 +23,6 @@ class Image(models.Model):
 
     def update_caption(self):
         pass
+
+    def get_absolute_url(self):
+        return reverse('image-detail', kwargs={'pk': self.pk})
