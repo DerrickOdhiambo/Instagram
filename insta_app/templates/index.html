@@ -21,7 +21,13 @@
           <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}">
         </div>
         <div class="card-footer">
-          <span>{{ image.likes }}</span>
+          <div>
+            <form action="{% url 'like_image' image.pk %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" name="image_id" value="{{ image.id }}" class="btn btn-sm"><i
+                  class="far fa-heart"></i></button>
+            </form>
+          </div>
           <p>{{ image.image_caption }}</p>
           <p>{{ image.comments }}</p>
           <p class="text-muted">{{ image.date_posted }}</p>
