@@ -6,8 +6,16 @@
     <div class="col-md-8">
       {% for image in images %}
       <div class="card">
-        <div class="card-header">
-          <h5>{{image.post_creator}}</h5>
+        <div class="card-header d-flex">
+          <div>
+            <img class="rounded-circle account-img-profile" src="{{ image.post_creator.profile.profile_picture.url }}"
+              alt="profile picture">
+          </div>
+          <div>
+            <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
+                href="{% url 'profile' %}">{{image.post_creator}}</a>
+            </h6>
+          </div>
         </div>
         <div class="view overlay">
           <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}">
