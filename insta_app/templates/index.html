@@ -18,18 +18,17 @@
           </div>
         </div>
         <div class="view overlay">
+          {% if image.image %}
           <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}">
+          {% endif %}
         </div>
         <div class="card-footer">
           <div>
-            <form action="{% url 'like_image' image.pk %}" method="POST">
-              {% csrf_token %}
-              <button type="submit" name="image_id" value="{{ image.id }}" class="btn btn-sm"><i
-                  class="far fa-heart"></i></button>
-            </form>
+            <a class="text-danger" href="{% url 'like_image' image.id %}"><i class="fas fa-heart"></i></a>
+            <p>{{ image.likes }} Likes</p>
           </div>
           <p>{{ image.image_caption }}</p>
-          <p>{{ image.comments }}</p>
+          <p>fffff{{ image.comments.text }}</p>
           <p class="text-muted">{{ image.date_posted }}</p>
         </div>
       </div>
