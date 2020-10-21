@@ -38,7 +38,7 @@
   font-family: 'Cookie', cursive;
 }
 .card {
-  margin: 0 1rem 3rem 1rem;
+  margin: 1rem 1rem 3rem 1rem;
 }
 .account-img {
   height: 150px;
@@ -49,4 +49,7 @@
 .account-img-profile {
   height: 50px;
   width: 50px;
+}
+div a i {
+  font-size: 20px;
 }
