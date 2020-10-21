@@ -34,8 +34,9 @@ class Image(models.Model):
 
 
 class Comment(models.Model):
-    image = models.ForeignKey(
-        'insta_app.Image', related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Image, related_name='comments', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.TextField()
 
     def __str__(self):
