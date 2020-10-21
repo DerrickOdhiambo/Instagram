@@ -12,7 +12,11 @@
       </div>
       <div>
         <a href="{% url 'update_profile' %}" class="btn btn-sm btn-otline ml-4">Edit Profile</a>
+        <a href="{% url 'logout' %}" class="btn btn-sm btn-otline ml-4">Logout</a>
       </div>
     </div>
+  </div>
+  <div>
+    <img src="{{ user.image.url }}" alt="">
   </div>
   {% endblock %}
