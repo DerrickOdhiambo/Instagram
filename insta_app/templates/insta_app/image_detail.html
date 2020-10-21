@@ -25,7 +25,7 @@
             <a class="text-danger" href="{% url 'like_image' image.id %}"><i class="fas fa-heart"></i></a>
             <p>{{ object.likes }} Likes</p>
           </div>
-          <p>{{ object.image_caption }}</p>
+          <p><span class="font-weight-bold">{{ object.post_creator }}</span> {{ object.image_caption }}</p>
           {% for comment in image.comments.all %}
           <div>
             <p><span class="font-weight-bold">{{ comment.author }}</span> {{ comment.text }}</p>

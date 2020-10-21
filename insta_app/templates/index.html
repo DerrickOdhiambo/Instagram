@@ -27,7 +27,7 @@
         <a class="text-dark ml-1" href="{% url 'comment-create' image.id %}"><i class="far fa-comment"></i></a>
         <p>{{ image.likes }} Likes</p>
       </div>
-      <p>{{ image.image_caption }}</p>
+      <p><span class="font-weight-bold">{{ image.post_creator }}</span> {{ image.image_caption }}</p>
       {% for comment in image.comments.all %}
       <div>
         <p><span class="font-weight-bold">{{ comment.author }}</span> {{ comment.text }}</p>
