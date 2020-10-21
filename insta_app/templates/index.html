@@ -5,16 +5,38 @@
 <div class="container home-page">
   {% for image in images %}
   <div class="card">
-    <div class="card-header d-flex">
-      <div>
-        <img class="rounded-circle account-img-profile" src="{{ image.post_creator.profile.profile_picture.url }}"
-          alt="profile picture">
+    <div class="card-header">
+      <div class="d-flex">
+        <div>
+          <img class="rounded-circle account-img-profile" src="{{ image.post_creator.profile.profile_picture.url }}"
+            alt="profile picture">
+        </div>
+        <div>
+          <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
+              href="{% url 'profile' %}">{{image.post_creator}}</a>
+          </h6>
+        </div>
       </div>
       <div>
-        <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
-            href="{% url 'profile' %}">{{image.post_creator}}</a>
-        </h6>
+        <a class="mt-3" role="button" id="{{ image.id }}" data-toggle="modal" data-target="#modalE"><i
+            class="fas fa-ellipsis-h"></i></a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalE" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <hr>
+                <a href="{% url 'image-detail' image.id %}" class="text-dark">Go to post</a>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+
     </div>
     <div class="view overlay">
       {% if image.image %}
