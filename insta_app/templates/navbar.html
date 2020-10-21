@@ -24,21 +24,32 @@
 <body>
   {% if user.is_authenticated %}
   <nav class="navbar sticky-top navbar-light white">
-    <div class="navbar-text dark-text ml-5">
-      <h1>Instagram</h1>
+    <div class="navbar-text dark-text">
+      <a href="{% url 'image-create' %}"><i class="fas fa-camera"></i></a>
     </div>
     <div class="navbar-text dark-text">
-      <form class="form-inline">
-        <div class="sm-form my-0 text-center">
-          <input class="form-control mr-sm-3 holder text-center" type="text" placeholder="Search" aria-label="Search">
-        </div>
-      </form>
+      <a href="{% url 'homepage' %}">
+        <h1>Instagram</h1>
+      </a>
     </div>
-    <div class="navbar-text dark-text mr-5">
-      <a href="{% url 'homepage' %}" class="ml-3"><i class="fas fa-home"></i></a>
+    <div class="navbar-text dark-text">
       <a href="" class="ml-3"><i class="fas fa-location-arrow"></i></a>
-      <a href="" class="ml-3"><i class="far fa-compass"></i></a>
-      <a href="" class="ml-3"><i class="far fa-heart"></i></a>
+    </div>
+  </nav>
+  <nav class="navbar fixed-bottom navbar-light white">
+    <div class="navbar-text dark-text">
+      <a href="{% url 'homepage' %}"><i class="fas fa-home"></i></a>
+    </div>
+    <div class="navbar-text dark-text">
+      <a href=""><i class="fas fa-search"></i></a>
+    </div>
+    <div class="navbar-text dark-text">
+      <a href=""><i class="far fa-plus-square"></i></a>
+    </div>
+    <div class="navbar-text dark-text">
+      <a href=""><i class="far fa-heart"></i></i></a>
+    </div>
+    <div class="navbar-text dark-text">
       <a href="{% url 'profile' %}" class="ml-3"><i class="far fa-user-circle"></i></a>
     </div>
   </nav>
