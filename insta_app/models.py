@@ -27,14 +27,17 @@ class Image(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(
         Image, related_name='comments', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    text = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    text = models.CharField(max_length=500, blank=False)
 
     def __str__(self):
         return self.text
 
     def get_absolute_url(self):
-        return reverse('homepage')
+        return reverse('image-detail', kwargs={'pk': self.post.pk})
+
+    def save_comments(self):
+        return self.save()
 
 
 class Likes(models.Model):
