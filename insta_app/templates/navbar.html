@@ -22,7 +22,6 @@
 </head>
 
 <body>
-  {% if user.is_authenticated %}
   <nav class="navbar sticky-top navbar-light white">
     <div class="navbar-text dark-text">
       <a href="{% url 'image-create' %}"><i class="fas fa-camera"></i></a>
@@ -53,8 +52,6 @@
       <a href="{% url 'profile' %}" class="ml-3"><i class="far fa-user-circle"></i></a>
     </div>
   </nav>
-  {% else %}
-  {% endif %}
 </body>
 
 </html>
