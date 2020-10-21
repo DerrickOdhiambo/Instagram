@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Image, Likes, Comment
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .forms import CommentForm
 
 
@@ -58,7 +58,7 @@ class ImageUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ImageDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Image
-    success_url = '/'
+    success_url = reverse_lazy('homepage')
 
     def test_func(self):
         image_post = self.get_object()
