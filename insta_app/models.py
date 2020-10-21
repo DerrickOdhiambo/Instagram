@@ -24,7 +24,7 @@ class Image(models.Model):
         pass
 
     def get_absolute_url(self):
-        return reverse('image--detail', kwargs={'pk': self.pk})
+        return reverse('image-detail', kwargs={'pk': self.pk})
 
     def delete_image(self):
         pass
