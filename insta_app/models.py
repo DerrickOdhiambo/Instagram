@@ -18,19 +18,10 @@ class Image(models.Model):
         self.save()
 
     def delete_image(self):
-        pass
-
-    def update_caption(self):
-        pass
+        self.delete()
 
     def get_absolute_url(self):
         return reverse('image-detail', kwargs={'pk': self.pk})
-
-    def delete_image(self):
-        pass
-
-    def update_caption(self):
-        pass
 
 
 class Comment(models.Model):
