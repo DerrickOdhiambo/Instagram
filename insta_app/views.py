@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Image, Likes, Comment
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.db.models import F
 
 
 def index(request, id):
@@ -73,17 +74,24 @@ def LikeView(request, pk):
     liked = Likes.objects.filter(user=user, image_post=image_post)
     # print(liked)
     if not liked:
+        print(liked)
         Likes.objects.create(user=user, image_post=image_post)
-        # print('--------------------------------------------')
-
+        print('--------------------------------------------')
+        print(liked)
+        # current_likes = 0
         current_likes = current_likes + 1
+        print(current_likes)
         # image_post.likes
         # image_post.save()
     else:
+        print(liked)
         Likes.objects.filter(user=user, image_post=image_post).delete()
-
+        print('deletedbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+        # current_likes = current_likes - 1
+        # current_likes = 1
         current_likes = current_likes - 1
 
+        print(f'cureeee{current_likes}')
     image_post.likes = current_likes
     image_post.save()
 
