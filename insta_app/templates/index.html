@@ -1,42 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      {% for image in images %}
-      <div class="card">
-        <div class="card-header d-flex">
-          <div>
-            <img class="rounded-circle account-img-profile" src="{{ image.post_creator.profile.profile_picture.url }}"
-              alt="profile picture">
-          </div>
-          <div>
-            <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
-                href="{% url 'profile' %}">{{image.post_creator}}</a>
-            </h6>
-          </div>
-        </div>
-        <div class="view overlay">
-          {% if image.image %}
-          <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}">
-          {% endif %}
-        </div>
-        <div class="card-footer">
-          <div>
-            <a class="text-danger" href="{% url 'like_image' image.id %}"><i class="fas fa-heart"></i></a>
-            <p>{{ image.likes }} Likes</p>
-          </div>
-          <p>{{ image.image_caption }}</p>
-          <p>fffff{{ image.comments.text }}</p>
-          <p class="text-muted">{{ image.date_posted }}</p>
-        </div>
+<div class="container home-page">
+  {% for image in images %}
+  <div class="card">
+    <div class="card-header d-flex">
+      <div>
+        <img class="rounded-circle account-img-profile" src="{{ image.post_creator.profile.profile_picture.url }}"
+          alt="profile picture">
       </div>
-      {% endfor %}
+      <div>
+        <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
+            href="{% url 'profile' %}">{{image.post_creator}}</a>
+        </h6>
+      </div>
     </div>
-    <div class="col-md-4">
+    <div class="view overlay">
+      {% if image.image %}
+      <img class="card-img-top img-fluid" src="{{ image.image.url }}" alt="{{ image.image_name }}">
+      {% endif %}
+    </div>
+    <div class="card-footer">
+      <div>
+        <a class="text-danger" href="{% url 'like_image' image.id %}"><i class="fas fa-heart"></i></a>
+        <p>{{ image.likes }} Likes</p>
+      </div>
+      <p>{{ image.image_caption }}</p>
+      <p>fffff{{ image.comments.text }}</p>
+      <p class="text-muted">{{ image.date_posted }}</p>
     </div>
   </div>
+  {% endfor %}
+</div>
 
 </div>
 {% endblock %}
