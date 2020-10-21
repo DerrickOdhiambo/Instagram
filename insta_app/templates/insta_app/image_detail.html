@@ -5,15 +5,42 @@
   <div class="row">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header d-flex">
-          <div>
-            <img class="rounded-circle account-img-profile" src="{{ object.post_creator.profile.profile_picture.url }}"
-              alt="profile picture">
+        <div class="card-header">
+          <div class="d-flex">
+            <div>
+              <img class="rounded-circle account-img-profile"
+                src="{{ object.post_creator.profile.profile_picture.url }}" alt="profile picture">
+            </div>
+            <div>
+              <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
+                  href="{% url 'profile' %}">{{object.post_creator}}</a>
+              </h6>
+            </div>
           </div>
           <div>
-            <h6 class="m-3"><a class="font-weight-bold text-dark text-muted"
-                href="{% url 'profile' %}">{{object.post_creator}}</a>
-            </h6>
+            <a class="mt-3" role="button" data-toggle="modal" data-target="#{{ object.post_creator }}{{ object.id }}"><i
+                class="fas fa-ellipsis-h"></i></a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="{{ object.post_creator }}{{ object.id }}" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <hr>
+                    <a href="#">Share Post</a>
+                    <hr>
+                    {% if object.post_creator == user %}
+                    <a href="{% url 'image-update' object.id%}" class="text-dark">Update Post</a>
+                    <hr>
+                    <a href="{% url 'image-delete' object.id%}" class="text-dark">Delete Post</a>
+                    {% endif %}
+                    <hr>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="view overlay">
