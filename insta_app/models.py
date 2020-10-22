@@ -23,6 +23,11 @@ class Image(models.Model):
     def get_absolute_url(self):
         return reverse('image-detail', kwargs={'pk': self.pk})
 
+    @classmethod
+    def search_users(cls, username):
+        users = cls.objects.filter(post_creator__icontains=username)
+        return users
+
 
 class Comment(models.Model):
     post = models.ForeignKey(
