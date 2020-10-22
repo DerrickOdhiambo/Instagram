@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ImageListView, LikeView, ImageUpdateView, ImageDetailView, ImageCreateView, ImageDeleteView, CommentCreateView
+from .views import ImageListView, LikeView, ImageUpdateView, ImageDetailView, ImageCreateView, ImageDeleteView, CommentCreateView, SearchListView, search
 from . import views
 
 
@@ -12,4 +12,6 @@ urlpatterns = [
     path('post/<int:pk>/comment/',
          CommentCreateView.as_view(), name='comment-create'),
     path('post/<int:pk>/like/', LikeView, name='like_image'),
+    path('search/', views.search, name='search'),
+    path('search/search_users/', SearchListView.as_view(), name='search-users'),
 ]
