@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <form action="{% url 'search-users' %}" method="GET">
+    {% csrf_token %}
+    <input class="form-control" type="text" name="q" placeholder="Search users...">
+  </form>
+</div>
+<div class="container">
+  <div class="container">
+    {% if searched_images %}
+    <h2>Found {{ searched_users|length }} of name {{message}}</h2>
+    {% endif %}
+  </div>
+  <div class='search-list'>
+    {% if object_list or posts %}
+
+    <div class='row justify-content-center'>
+      <h1>Search Results for "<i>{{query}}"</i></h1>
+      {% else %}
+      <h1>No Search Results for<i> "{{query}}"</i></h1>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if object_list %}
+  <h2>Users</h2>
+  {% for i in object_list %}
+  <div class='row list-div' id='profile'>
+    <a href="{% url 'profile' %}">
+      <img class='rounded-circle account-img' src="{{ i.profile.profile_picture.url}}">
+      <b class="text-dark">{{i}}</b>
+
+    </a>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endblock content %}
