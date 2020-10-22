@@ -5,6 +5,7 @@ from .models import Image, Likes, Comment
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from .forms import CommentForm
+from django.contrib.auth.models import User
 
 
 def index(request, id):
@@ -86,3 +87,24 @@ def LikeView(request, pk):
     image_post.save()
 
     return HttpResponseRedirect(reverse('image-detail', args=[pk]))
+
+
+def search(request):
+    return render(request, 'search.html')
+
+
+class SearchListView(ListView):
+    model = User
+    template_name = 'search.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get('q')
+        context['query'] = self.request.GET.get('q')
+        context['posts'] = Image.objects.filter(image_caption__icontains=query)
+        return context
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = User.objects.filter(username__icontains=query)
+        return object_list
