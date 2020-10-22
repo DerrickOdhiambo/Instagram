@@ -29,14 +29,13 @@
                   <div class="modal-body">
                     <hr>
                     <a href="#">Share Post</a>
-                    <hr>
                     {% if object.post_creator == user %}
+                    <hr>
                     <a href="{% url 'image-update' object.id%}" class="text-dark">Update Post</a>
                     <hr>
                     <a href="{% url 'image-delete' object.id%}" class="text-dark">Delete Post</a>
+                    <hr>
                     {% endif %}
-                    <hr>
-                    <hr>
                   </div>
                 </div>
               </div>
